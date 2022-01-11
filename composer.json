@@ -1,0 +1,19 @@
+{
+    "name": "rguti/app-salon",
+    "description": "MVC, SQL, PHP",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "MVC\\": "./",
+            "Controllers\\" : "./controllers",
+            "Model\\" : "./models"
+        }
+    },
+    "authors": [
+        {
+            "name": "rodrigoagutierrez",
+            "email": "82203115+rodrigoagutierrez@users.noreply.github.com"
+        }
+    ],
+    "require": {}
+}
