@@ -15,5 +15,7 @@
             "email": "82203115+rodrigoagutierrez@users.noreply.github.com"
         }
     ],
-    "require": {}
+    "require": {
+        "phpmailer/phpmailer": "^6.5"
+    }
 }

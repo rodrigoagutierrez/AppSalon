@@ -2,6 +2,7 @@
 
 namespace Controllers;
 
+use Model\Usuario;
 use MVC\Router;
 
 class LoginController {
@@ -21,8 +22,38 @@ class LoginController {
     echo "Desde Reperar";
   }
   public static function crear(Router $router) {
+    
+    $usuario = new Usuario($_POST);
+
+    //Alertas vacias
+    $alertas = [];
+    if($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+      $usuario->sincronizar($_POST);
+      $alertas = $usuario->validarNuevaCuenta();
+
+      //Revisar que alertas este vacío
+      if(empty($alertas)) {
+        //Verificar que el usario no este registrado
+        $resultado = $usuario->existeUsuario();
+
+        if($resultado->num_rows) {
+          $alertas = Usuario::getAlertas();
+        } else {
+          //Hashear el password
+          $usuario->hashPassword();
+
+          //Generar un Token único
+          $usuario->crearToken();
+
+          debuguear('No esta registrado');
+        }
+      }
+    }
+
     $router->render('auth/crear-cuenta', [
-      
+      'usuario' => $usuario,
+      'alertas' => $alertas
     ]);
   }
 }
