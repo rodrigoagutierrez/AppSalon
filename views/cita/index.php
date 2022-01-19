@@ -2,14 +2,21 @@
 <p class="descripcion-pagina">Elige Tus Servicios y coloca tus datos</p>
 
 <div id="app">
+
+  <nav class="tabs">
+    <button type="button" data-paso="1">Servicios</button>
+    <button type="button" data-paso="2">información cita</button>
+    <button type="button" data-paso="3">Resumen</button>
+  </nav>
+
   <div id="paso-1" class="seccion">
     <h2>Servicios</h2>
-    <p>Elige tus Servicios a continuación</p>
+    <p class="text-center">Elige tus Servicios a continuación</p>
     <div id="servicios" class="listado-servicios"></div>
   </div>
   <div id="paso-2" class="seccion">
     <h2>Tus datos y cita</h2>
-    <p>Coloca tus datos y fecha de tu cita</p>
+    <p class="text-center">Coloca tus datos y fecha de tu cita</p>
     <form class="formulario">
       
       <div class="campo">
@@ -18,6 +25,7 @@
         id="nombre"
         type="text"
         placeholder="Tu Nombre"
+        value="<?php echo $nombre; ?>"
         />
       </div>
       
@@ -35,6 +43,7 @@
         id="hora"
         type="time"
         />
+
       </div>
     </form>
   </div>
@@ -43,6 +52,9 @@
     <p>Verifica que tu información sea correcta</p>
   </div>
 
-
+  <div class="paginacion">
+    <button id="anterior" class="boton">&laquo; Anterior</button>
+    <button id="siguiente" class="boton">Siguiente &raquo; </button>
+  </div>
 
 </div>
