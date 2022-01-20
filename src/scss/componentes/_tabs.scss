@@ -22,10 +22,9 @@
       cursor: pointer;
       background-color: darken(v.$azul, 10%);
     }
-    &:actual {
+    &.actual {
       background-color: v.$blanco;
       color: v.$azul;
     }
-
   }
 }
