@@ -25,7 +25,7 @@
         id="nombre"
         type="text"
         placeholder="Tu Nombre"
-        value="<?php echo $nombre; ?>"
+        
         />
       </div>
       
@@ -34,6 +34,7 @@
         <input
         id="fecha"
         type="date"
+        min="<?php echo date('Y-m-d', strtotime('+1 day') ); ?>"
         />
       </div>
 
@@ -47,7 +48,7 @@
       </div>
     </form>
   </div>
-  <div id="paso-3" class="seccion">
+  <div id="paso-3" class="seccion contenido-resumen">
     <h2>Resumen</h2>
     <p>Verifica que tu información sea correcta</p>
   </div>
