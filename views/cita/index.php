@@ -7,7 +7,7 @@
     <button class="actual" type="button" data-paso="1">Servicios</button>
     <button type="button" data-paso="2">información cita</button>
     <button type="button" data-paso="3">Resumen</button>
-  </nav>  
+  </nav>
 
   <div id="paso-1" class="seccion">
     <h2>Servicios</h2>
@@ -18,7 +18,7 @@
     <h2>Tus datos y cita</h2>
     <p class="text-center">Coloca tus datos y fecha de tu cita</p>
     <form class="formulario">
-      
+
       <div class="campo">
         <label for="nombre">Nombre</label>
         <input
@@ -26,9 +26,10 @@
         type="text"
         placeholder="Tu Nombre"
         
+
         />
       </div>
-      
+
       <div class="campo">
         <label for="fecha">Fecha</label>
         <input
@@ -44,8 +45,9 @@
         id="hora"
         type="time"
         />
-
       </div>
+      <input type="hidden" id="id" value="<?php echo $id;?>">
+
     </form>
   </div>
   <div id="paso-3" class="seccion contenido-resumen">
@@ -62,6 +64,7 @@
 
 <?php
  $script = "
+    <script src='//cdn.jsdelivr.net/npm/sweetalert2@11'></script>
     <script src='build/js/app.js'></script>
- "; 
-?> 
+ ";
+?>

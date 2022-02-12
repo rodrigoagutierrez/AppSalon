@@ -33,7 +33,7 @@ class Usuario extends ActiveRecord {
   //Mensajes de validación para la creación de una cuenta
   public function validarNuevaCuenta() {
     if(!$this->nombre) {
-      self::$alertas['error'][] = 'El Nombre obligatorio';
+      self::$alertas['error'][] = 'El Nombre es obligatorio';
     }
     if(!$this->apellido) {
       self::$alertas['error'][] = 'El Apellido es obligatorio';
@@ -98,9 +98,9 @@ class Usuario extends ActiveRecord {
     $this->token = uniqid();
   }  
 
-  public function comprobarPassworAndVerificado($password) {
+  public function comprobarPasswordAndVerificado($password) {
     $resultado = password_verify($password, $this->password);
-
+    
     if(!$resultado || !$this->confirmado) {
       self::$alertas ['error'][] = 'Password incorrecto o tu cuenta no ha sido confirmada';
     } else {
