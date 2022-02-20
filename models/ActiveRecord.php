@@ -1,5 +1,7 @@
 <?php
+
 namespace Model;
+
 class ActiveRecord {
 
     // Base DE DATOS
@@ -127,6 +129,12 @@ class ActiveRecord {
         $query = "SELECT * FROM " . static::$tabla  ." WHERE ${columna} = '${valor}'";
         $resultado = self::consultarSQL($query);
         return array_shift( $resultado ) ;
+    }
+
+    // Consulta Plana de SQL (Utilizar cuando los metodos del modelos no son suficientes)
+    public static function SQL($query) {
+        $resultado = self::consultarSQL($query);
+        return $resultado;
     }
 
     // crea un nuevo registro
