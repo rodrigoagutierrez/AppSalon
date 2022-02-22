@@ -1,8 +1,8 @@
 <h1 class="nombre-pagina">Crear Nueva Cita</h1>
 <p class="descripcion-pagina">Elige Tus Servicios y coloca tus datos</p>
 
-<?php
-  include_once __DIR__ . '/templates/barra.php';
+<?php 
+  include_once __DIR__ . '/../templates/barra.php'; 
 ?>
 
 <div id="app">
@@ -29,9 +29,7 @@
         id="nombre"
         type="text"
         placeholder="Tu Nombre"
-        
-
-        />
+      />
       </div>
 
       <div class="campo">

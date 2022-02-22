@@ -7,7 +7,9 @@ use MVC\Router;
 class CitaController {
   public static function index(Router $router) {
 
-    // session_start();
+    if(!isset($_SESSION)) {//evitar error de 'ignorar session'
+      session_start();//se inicia sesion y se puede acceder a $_SESSION
+    };
 
     isAuth();
 

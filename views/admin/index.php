@@ -1,7 +1,7 @@
 <h1 class="nombre-pagina">Panel Administración</h1>
 
-<?php
-  include_once __DIR__ . '/../templates/barra.php';
+<?php 
+  include_once __DIR__ . '/../templates/barra.php'; 
 ?>
 
 <h2>Buscar Citas</h2>
@@ -13,10 +13,19 @@
       type="date"
       id="fecha"
       name="fecha"
+      value="<?php echo $fecha; ?>"
     />
     </div>
   </form>
 </div>
+
+<?php
+  if(count($citas) === 0) {
+    echo "<h2> No Hay Citas en esta fecha </h2>";
+  }
+?>
+
+
 <div id="citas-admin">
   <ul class="citas">
     <?php
@@ -52,3 +61,7 @@
         } //Fin Foreach?>      
   </ul>
 </div>
+
+<?php 
+  $script = "<script src='build/js/buscador.js' ></script>"
+?>
