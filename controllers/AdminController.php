@@ -10,6 +10,8 @@ class AdminController {
       if(!isset($_SESSION)) {//evitar error de 'ignorar session'
         session_start();//se inicia sesion y se puede acceder a $_SESSION
       };
+
+      isAdmin();
     
     $fecha = $_GET['fecha'] ?? date('Y-m-d');
     $fechas = explode('-', $fecha); 
