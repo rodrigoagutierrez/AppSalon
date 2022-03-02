@@ -12,6 +12,7 @@ class ServicioController {
     if(!isset($_SESSION)) {//evitar error de 'ignorar session'
       session_start();//se inicia sesion y se puede acceder a $_SESSION
     };
+    isAdmin();
 
     $servicios = Servicio::all();
 
@@ -26,6 +27,7 @@ class ServicioController {
     if(!isset($_SESSION)) {//evitar error de 'ignorar session'
       session_start();//se inicia sesion y se puede acceder a $_SESSION
     };
+    isAdmin();
 
     $alertas = [];
     $servicio = new Servicio;
@@ -53,6 +55,7 @@ class ServicioController {
     if(!isset($_SESSION)) {//evitar error de 'ignorar session'
       session_start();//se inicia sesion y se puede acceder a $_SESSION
     };
+    isAdmin();
     
     if(!is_numeric($_GET['id'])) return;
     $id = filter_var($_GET['id'], FILTER_VALIDATE_INT); //Variable para validar que sea un entero el id
@@ -82,6 +85,7 @@ class ServicioController {
     if(!isset($_SESSION)) {//evitar error de 'ignorar session'
       session_start();//se inicia sesion y se puede acceder a $_SESSION
     };
+    isAdmin();
 
     if($_SERVER['REQUEST_METHOD'] === 'POST') {
       $id = $_POST['id'];
