@@ -13,8 +13,11 @@ class ServicioController {
       session_start();//se inicia sesion y se puede acceder a $_SESSION
     };
 
+    $servicios = Servicio::all();
+
     $router->render('servicios/index', [
-      'nombre'=>$_SESSION['nombre']
+      'nombre'=>$_SESSION['nombre'],
+      'servicios' => $servicios
 
     ]);
   } 
@@ -50,30 +53,43 @@ class ServicioController {
     if(!isset($_SESSION)) {//evitar error de 'ignorar session'
       session_start();//se inicia sesion y se puede acceder a $_SESSION
     };
+    
+    if(!is_numeric($_GET['id'])) return;
+    $id = filter_var($_GET['id'], FILTER_VALIDATE_INT); //Variable para validar que sea un entero el id
+    $servicio = Servicio::find($id);
+    $alertas = [];
 
     if($_SERVER['REQUEST_METHOD'] === 'POST') {
+      $servicio->sincronizar($_POST);
 
+      $alertas = $servicio->validar();
+
+      if(empty($alertas)) {
+        $servicio->guardar();
+        header('Location: /servicios');
+      }
     };
 
     $router->render('servicios/actualizar', [
-      'nombre'=>$_SESSION['nombre']
+      'nombre'=>$_SESSION['nombre'],
+      'servicio'=>$servicio,
+      'alertas'=>$alertas
 
     ]);
   } 
-  public static function eliminar(Router $router) {
+  public static function eliminar() {
 
     if(!isset($_SESSION)) {//evitar error de 'ignorar session'
       session_start();//se inicia sesion y se puede acceder a $_SESSION
     };
 
     if($_SERVER['REQUEST_METHOD'] === 'POST') {
-      
+      $id = $_POST['id'];
+      $servicio = Servicio::find($id);
+      $servicio->eliminar();
+      header('Location: /servicios');
     };
 
-    $router->render('servicios/eliminar', [
-      'nombre'=>$_SESSION['nombre']
-
-    ]);
   } 
   
 }

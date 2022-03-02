@@ -3,7 +3,7 @@
       <input 
         type="text"
         id="nombre"
-        placeholder="Nombre Sercvicio"
+        placeholder="Nombre Servicio"
         name="nombre"
         value="<?php echo $servicio->nombre ;?>"
       />
