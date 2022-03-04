@@ -1,6 +1,12 @@
 <?php
 
-$db = mysqli_connect('localhost', 'root', '', 'appsalon');
+$db = mysqli_connect(
+    $_ENV['DB_HOST'],
+    $_ENV['DB_USER'],
+    $_ENV['DB_PASS'],
+    $_ENV['DB_BD'],
+);
+   
 
 
 if (!$db) {
@@ -8,4 +14,4 @@ if (!$db) {
     echo "errno de depuración: " . mysqli_connect_errno();
     echo "error de depuración: " . mysqli_connect_error();
     exit;
-}
+} 

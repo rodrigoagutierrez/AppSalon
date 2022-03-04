@@ -23,7 +23,7 @@ function iniciarApp() {
   
   consultarAPI();// Consulta la API en el backend
 
-  idCliente();
+  // idCliente();  
   nombreCliente();//Añade el nombre del cliente al objeto de cita
   seleccionarFecha();//Añade la fecha de la cita en el objeto
   seleccionarHora();//Añade la hora de la cita en el objeto
@@ -253,16 +253,16 @@ function mostrarResumen() {
 
       return;
   } 
-
+  
   //Formatear el div de resumen
   const { nombre, fecha, hora, servicios } = cita;
 
   //Heading para servicios en resumen
-  const HeadingServicios = document.createElement('H3');
-  HeadingServicios.textContent = 'Resumen de Servicios';
-  resumen.appendChild(HeadingServicios);
+  const headingServicios = document.createElement('H3');
+  headingServicios.textContent = 'Resumen de Servicios';
+  resumen.appendChild(headingServicios);
 
-  //Iterando y momstrando servicios
+  //Iterando y mostrando servicios
   servicios.forEach(servicio => {
     const { id, precio, nombre } = servicio;
     const contenedorServicio = document.createElement('DIV');
@@ -281,9 +281,9 @@ function mostrarResumen() {
 
   })
   //Heading para cita en resumen
-  const HeadingCita = document.createElement('H3');
-  HeadingCita.textContent = 'Resumen de Cita';
-  resumen.appendChild(HeadingCita);
+  const headingCita = document.createElement('H3');
+  headingCita.textContent = 'Resumen de Cita';
+  resumen.appendChild(headingCita);
 
   const nombreCliente = document.createElement('P');
   nombreCliente.innerHTML = `<span>Nombre:</span> ${nombre}`;
@@ -300,11 +300,11 @@ function mostrarResumen() {
   const fechaFormateada = fechaUTC.toLocaleDateString('es-ES', opciones);
 
 
-  const fechaCliente = document.createElement('P');
-  fechaCliente.innerHTML = `<span>Fecha:</span> ${fechaFormateada}`;
+  const fechaCita = document.createElement('P');
+  fechaCita.innerHTML = `<span>Fecha:</span> ${fechaFormateada}`;
 
-  const horaCliente = document.createElement('P');
-  horaCliente.innerHTML = `<span>Hora:</span> ${hora}`;
+  const horaCita = document.createElement('P');
+  horaCita.innerHTML = `<span>Hora:</span> ${hora} Horas`;
 
   //Boton para crear una cita
   const botonReservar = document.createElement('BUTTON');
@@ -324,7 +324,7 @@ async function reservarCita() {
   const{ nombre, fecha, hora, servicios, id } = cita;
 
   const idServicios = servicios.map(servicio => servicio.id);
-  console.log(idServicios);
+  // console.log(idServicios);
 
   const datos = new FormData();
   
@@ -354,12 +354,11 @@ async function reservarCita() {
           text: 'Tu Cita fue creada correctamente!',
           button: 'OK'
         }).then( () => {
-          window.location.reload();
-        })
-      }
-
-      // console.log([...datos]); Muestra info de datos
-  
+          setTimeout(() => {
+            window.location.reload();
+        }, 3000);
+      })
+    }
   } catch (error) {
     Swal.fire({
       icon: 'error',
@@ -367,5 +366,5 @@ async function reservarCita() {
       text: 'Hubo un error al guardar la cita'
     })
   }
-
+  // console.log([...datos]); Muestra info de datos
 }  
