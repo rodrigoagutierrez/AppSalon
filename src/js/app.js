@@ -1,3 +1,14 @@
+async function consultarAPI(){
+  try {
+     const url = `${server}/api/servicios`; 
+     const resultado = await fetch(url); 
+     const servicios = await resultado.json(); 
+     mostrarServicios(servicios);
+  } catch (error) { 
+     console.log(error); 
+ }
+}
+
 let paso = 1;
 const pasoInicial = 1;
 const pasoFinal = 3;
