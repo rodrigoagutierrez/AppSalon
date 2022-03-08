@@ -1,4 +1,3 @@
-
 let paso = 1;
 const pasoInicial = 1;
 const pasoFinal = 3;
@@ -116,13 +115,12 @@ function paginaSiguiente() {
   })
 }
 
-const server = window.location.origin;
-async function consultarAPI(){
+async function consultarAPI() {
   try {
-     const url = `${server}/api/servicios`; 
-     const resultado = await fetch(url); 
-     const servicios = await resultado.json(); 
-     mostrarServicios(servicios);
+    const url = 'http://localhost:3000/api/servicios';
+    const resultado = await fetch(url);
+    const servicios = await resultado.json();
+    mostrarServicios(servicios);
 
   } catch (error) {
     console.log('error');
