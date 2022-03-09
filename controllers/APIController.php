@@ -36,7 +36,7 @@ class APIController {
         $respuesta = [
             'servicios' => $resultado
         ];
-        echo json_encode($respuesta);
+        echo json_encode($respuesta, JSON_UNESCAPED_UNICODE);
     }
 
     public static function eliminar() {
