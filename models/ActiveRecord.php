@@ -1,5 +1,7 @@
 <?php
+
 namespace Model;
+
 class ActiveRecord {
 
     // Base DE DATOS
@@ -129,6 +131,12 @@ class ActiveRecord {
         return array_shift( $resultado ) ;
     }
 
+    // Consulta Plana de SQL (Utilizar cuando los metodos del modelos no son suficientes)
+    public static function SQL($query) {
+        $resultado = self::consultarSQL($query);
+        return $resultado;
+    }
+
     // crea un nuevo registro
     public function crear() {
         // Sanitizar los datos
@@ -137,7 +145,7 @@ class ActiveRecord {
         // Insertar en la base de datos
         $query = " INSERT INTO " . static::$tabla . " ( ";
         $query .= join(', ', array_keys($atributos));
-        $query .= " ) VALUES (' "; 
+        $query .= ") VALUES (' "; 
         $query .= join("', '", array_values($atributos));
         $query .= " ') ";
 
